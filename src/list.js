@@ -4,4 +4,5 @@ export const LIST_OF_TEST_ITEMS = {
     c: "c",
     d: "d",
     f: "f",
+    g: "g"
 }
