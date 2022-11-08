@@ -24,10 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set output
-        id: vars
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -53,11 +49,9 @@ jobs:
 
       - name: Release
         id: create_release
-        if: steps.vars.outputs.tag != ''
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{ steps.vars.outputs.tag }}
-          name: Version ${{ steps.vars.outputs.tag }}
+          name: Release ${{ github.ref }}
           publish: true
