@@ -24,6 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set version
+        id: version
+        run: echo "tag=$(grep '"version"' package.json | cut -d '"' -f 4 | head -n 1)" >> $GITHUB_OUTPUT
+        shell: bash
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -53,5 +58,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Release ${{ github.ref }}
+          tag: v${{ steps.version.outputs.tag }}
+          name: Release v${{ steps.version.outputs.tag }}
           publish: true
