@@ -1,6 +1,6 @@
 {
   "name": "gitflow-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git@github.com:giedriusvickus/gitflow-test.git",
   "author": "Giedrius Vickus <giedrius.vickus@gmail.com>",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "svgr": "svgr --svgo-config svgo.config.js --index-template icon-index-template.js --filename-case kebab --out-dir icons_compiled -- icons",
     "build": "npm run svgr && microbundle-crl src/{index,list,utils}.js --no-compress --format modern,cjs",
     "release-rc": "git-branch-is --not main && npm run build && npm --no-git-tag-version version prerelease -f --preid=rc && git add . && git commit -m \"Version $(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1)\" && git tag v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push origin v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push -u origin HEAD",
-    "release": "git-branch-is --not main && npm run build && npm --no-git-tag-version version patch -f && git add . && git commit -m \"Version $(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1)\" && git tag v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push origin v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push -u origin HEAD",
+    "release": "git-branch-is --not main && npm run build && npm --no-git-tag-version version patch -f && git add . && git commit -m \"Version $(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1)\" && git push -u origin HEAD",
     "release-no-bump-no-commit": "git-branch-is --not main && git tag v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push origin v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push -u origin HEAD",
     "release-no-bump": "git-branch-is --not main && git add . && git commit -m \"Version $(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1)\" && git tag v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push origin v$(grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1) && git push -u origin HEAD"
   },
