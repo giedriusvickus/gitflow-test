@@ -1,6 +1,6 @@
 {
   "name": "gitflow-test",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": "git@github.com:giedriusvickus/gitflow-test.git",
   "author": "Giedrius Vickus <giedrius.vickus@gmail.com>",
   "license": "MIT",
